@@ -1,0 +1,28 @@
+    <div class="row mt-5">
+        <div class="col-md-4 m-auto">
+            <div class="card card-body text-center" id="card">
+                <h1><i class="fas fa-sign-in-alt"></i><img src="./styles/images/went.png" alt="went logo" class="logo">
+                </h1>
+                <h2>Welcome back!</h2>
+    
+                {{!-- <form method="POST" action="/api/login"> --}}
+                <form>
+                    <div class="form-group">
+                        <label for="inputEmail">Email address</label>
+                        <input type="email" name="email" class="form-control" id="userLogInEmail"
+                            aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" name="password" class="form-control" id="userLogInPassword"
+                            placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-secondary loginbutton" style="background:#e78200">Log in</button>
+                </form>
+                <p class="lead mt-4">
+                    Don't have an account? <a href="/register">Sign up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+

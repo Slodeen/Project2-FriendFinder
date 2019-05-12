@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Istok+Web:700" rel="stylesheet">
+    <link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css' />
+    <link rel="stylesheet" href="../public/styles/styles.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <title>Profile</title>
+</head>
+
+<body>
+    <!-- As a heading -->
+    <nav class="navbar navbar-light bg-light" class="nabvar">
+        <span class="navbar-brand mb-0 h1"><img src="./styles/images/went.png" alt="went logo" class="logo"></span>
+        <span>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" id="userCat" type="text" placeholder="Category">
+                <input class="form-control mr-sm-2" id="userZip" type="text" placeholder="Zip code">
+                <button class="btn btn-secondary btn-sm" id="searchbtn">Search</button>
+            </form>
+        </span>
+        <a href="/users/logout" class="btn btn-secondary btn-sm" data-toggle="popover" id="log-btn">Logout</a>
+    </nav>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <h3>Hello Jhonny!</h3>
+                <div class="card" style="width: 18rem;">
+                    <img src="./styles/images/went.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                            card's content.
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-sm">
+          <h3>Mesagges</h3>
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <i class="fas fa-comments"></i>
+            </div>
+          </div>
+        </div> -->
+            <div class="col-md">
+                <h3>Today's forecast</h3>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <div class="col 6" id="forecast"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- <div class="container"> -->
+        <div class="row">
+            <div class="col-sm">
+                <div class="card">
+                    <!-- <div class="col 6" id="forecast"></div> -->
+                    <div id="event"></div>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->    
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="../public/assets/js/script.js"></script>
+</body>
+
+</html>
+
+
+    <!-- <h1 class="mt-4">Dashboard</h1>
+    <p class="lead mb-3">Welcome </p>
+    {{!-- <a href="/users/logout" class="btn btn-secondary">Logout</a> --}} -->

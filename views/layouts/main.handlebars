@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Istok+Web:700" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css'/>
+    <link rel="stylesheet" href="./styles/styles.css" type="text/css" />
+    <script src="https://cdn.aerisapi.com/wxblox/aeris-wxblox.min.js"></script>
+    <script type="text/javascript" src="http://api.eventful.com/js/api"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <title>{{title}}</title>
+</head>
+<body onload="myFunction()">
+    <nav class="navbar navbar-light bg-light" class="nabvar">
+      <span class="navbar-brand mb-0 h1"><img src="./styles/images/went.png" alt="went logo" class="logo"></span>
+
+      {{!-- <span>
+        <form class="form-inline">
+          <input class="form-control form-inline" id="userCat" type="text" placeholder="Category">
+          <input class="form-control form-inline" id="zipCode" type="text" placeholder="Zip code">
+          <button class="btn btn-secondary" id="searchbtn">Search</button>
+        </form>
+      </span> --}}
+      <span>
+      <div class="container">
+        <form action="#" method="post" novalidate="novalidate">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <input id="zipCode" type="text" class="form-control search-slt" placeholder="Zipcode">
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <select id="userCat" class="form-control search-slt" id="exampleFormControlSelect1">
+                                
+                                <option>Categories</option>
+                                <option>Music</option>
+                                <option>Concerts</option>
+                                <option>Sport Events</option>
+                                <option>Food</option>
+                                <option>Nightlife</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <button id="searchbtn" type="button" class="btn btn-secondary wrn-btn" data-toggle="popover">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+      </div>
+      </span>
+
+      {{!-- <a href="./login" class="btn btn-secondary btn-sm login-button" data-toggle="popover" id="log-btn">Log in</a> --}}
+      <span>
+      <a class="btn btn-secondary btn-sm login-button" data-toggle="popover" id="logout-btn">Logout</a>
+      </span>
+    </nav>
+
+    <div id="name-display"></div>
+    
+
+    {{{body}}}
+  <script>
+    function myFunction() {
+      $("#test-name").text("Welcome, " + sessionStorage.getItem("firstname") + "!");
+      
+      //========Onload /dashboard weather and random events=============================
+        var zipCode = sessionStorage.getItem("zipcode");
+        var queryURL = "https://api.aerisapi.com/forecasts/" + zipCode + "?&format=json&filter=daynight&from=friday&to=+1days&limit=1&client_id=Ykw9spzB2RG7Ik8FFmw9N&client_secret=33qIcxRcSahYSrtE1Vg9rsP3VG5srtYsR690rCTd";
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        .then(function (response) {
+
+        if (!response.success) {
+        console.log('Weather Information is not available at the moment!')
+        } else {
+
+          var weatherDiv = $("<div>");
+
+          var results = response.response[0].periods;
+          
+          console.log(results);
+
+          for (var i = 0; i < results.length; i++) {
+
+            var maxF = $("<p>").text("High: " + results[i].maxFeelslikeF);
+            //console.log(maxF);
+            var minF = $("<p>").text("Low: " + results[i].minFeelslikeF);
+            var weather1 = $("<p>").text(results[i].weather);
+            var ts = results[i].timestamp;
+            console.log(ts);
+            var dateString = moment(ts).calendar();
+            console.log(dateString);
+            var dateandTime = $("<p>").text(dateString);
+            var formatedDate = moment(dateandTime).format("LLLL");
+
+            var iconShow = results[i].icon;
+            var iconImage = $("<img>");
+            iconImage.attr("src", "http://cdn.aerisapi.com/wxblox/icons/" + iconShow);
+            weatherDiv.append(iconImage);
+            weatherDiv.append(maxF);
+            weatherDiv.append(minF);
+            weatherDiv.append(formatedDate);
+            weatherDiv.append(weather1);
+
+            $("#forecast").prepend(weatherDiv);
+          }
+        }
+      })
+
+    var title = sessionStorage.getItem("title");
+    var address = sessionStorage.getItem("address");
+    var city = sessionStorage.getItem("city");
+    var time = sessionStorage.getItem("start_time");
+    var venueName = sessionStorage.getItem("venue_name");
+    var image = sessionStorage.getItem("image"); 
+    var description = sessionStorage.getItem("description");
+
+    $("#image").attr("src", image);
+    $("#eventName").html(title);
+    $("#address").html(address);
+    $("#city").html(city);
+    $("#time").html(time);
+    $("#venueName").html(venueName);
+    $("#description").html(description);
+
+
+    
+    
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="/js/script.js"></script>
+  <script src="/js/eventAPI.js"></script>
+  <script src="/js/display.js"></script>
+  <script src="/js/comment.js"></script>
+</body>
+</html>  
